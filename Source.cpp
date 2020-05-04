@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <vector>
 
-// конструктор
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 N::OurClass::OurClass(const std::string& str) {
 	std::vector<std::string> v;
 	int size = str.size();
@@ -36,16 +36,16 @@ N::OurClass::OurClass() {
 	room = 0;
 }
 
-//возвращает номер дома
+//РІРѕР·РІСЂР°С‰Р°РµС‚ РЅРѕРјРµСЂ РґРѕРјР°
 int N::OurClass::getHome() {
 	return home;
 }
-//возвращает номер квартиры
+//РІРѕР·РІСЂР°С‰Р°РµС‚ РЅРѕРјРµСЂ РєРІР°СЂС‚РёСЂС‹
 int N::OurClass::getFlat() {
 	return flat;
 }
 
-//возвращает площадь
+//РІРѕР·РІСЂР°С‰Р°РµС‚ РїР»РѕС‰Р°РґСЊ
 int N::OurClass::getSquare() {
 	return s;
 }
@@ -53,7 +53,7 @@ int N::OurClass::getSquare() {
 int N::OurClass::getPeople() {
 	return people;
 }
-//возврашает ФИО
+//РІРѕР·РІСЂР°С€Р°РµС‚ Р¤РРћ
 std::string N::OurClass::getFio() {
 	return fio;
 }
@@ -62,7 +62,7 @@ std::string N::OurClass::AllString() {
 	return std::to_string(home) + " " + std::to_string(flat) + " " + std::to_string(room) + " " + std::to_string(s) + " " +
 		std::to_string(people) + " " + fio;
 }
-//работает также, как конструктор
+//СЂР°Р±РѕС‚Р°РµС‚ С‚Р°РєР¶Рµ, РєР°Рє РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 void N::OurClass::setAll(std::string& str) {
 	std::vector<std::string> v;
 	int size = str.size();
@@ -89,7 +89,7 @@ std::string N::OurClass::showSorted() {
 	return std::to_string(s) + " " + std::to_string(home) + " " + std::to_string(flat) + " " + fio;
 }
 
-//// перегрузка оператора сравнения БОЛЬШЕ
+//// РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ Р‘РћР›Р¬РЁР•
 bool N::operator>(const OurClass& left, const OurClass& right) {
 	if ((left.fio > right.fio)) {
 		return true;
@@ -99,7 +99,7 @@ bool N::operator>(const OurClass& left, const OurClass& right) {
 		return false;
 }
 
-// перегрузка оператора сравнения БОЛЬШЕ ИЛИ РАВНО
+// РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ Р‘РћР›Р¬РЁР• РР›Р Р РђР’РќРћ
 bool N::operator>=(const OurClass& left, const OurClass& right) {
 	if ((left.fio > right.fio) || (left.fio == right.fio)) {
 		return true;
@@ -110,7 +110,7 @@ bool N::operator>=(const OurClass& left, const OurClass& right) {
 };
 
 
-// перегрузка оператора МЕНЬШЕ
+// РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РњР•РќР¬РЁР•
 bool N::operator<(const OurClass& left, const OurClass& right) {
 	if (left.fio < right.fio) {
 		return true;
@@ -121,7 +121,7 @@ bool N::operator<(const OurClass& left, const OurClass& right) {
 };
 
 
-//перегрузка оператора МЕНЬШЕ ИЛИ РАВНО
+//РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РњР•РќР¬РЁР• РР›Р Р РђР’РќРћ
 bool N::operator<=(const OurClass& left, const OurClass& right) {
 	if ((left.fio < right.fio) ||  (left.fio == right.fio)) {
 		return true;
