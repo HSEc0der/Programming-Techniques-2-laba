@@ -19,10 +19,10 @@ void bsearch(vector<OurClass>& data, int start, int end, std::string& key, vecto
 	if (data[middle].getFio() == key) {
 		Found.push_back(data[middle]);
 
-		up = middle; // для поиска остальных значений
-		down = middle; // для поиска остальных значений
+		up = middle; // РґР»СЏ РїРѕРёСЃРєР° РѕСЃС‚Р°Р»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№
+		down = middle; // РґР»СЏ РїРѕРёСЃРєР° РѕСЃС‚Р°Р»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№
 
-		// идем вверх и ищем подходящие значения
+		// РёРґРµРј РІРІРµСЂС… Рё РёС‰РµРј РїРѕРґС…РѕРґСЏС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ
 		up = middle + 1;
 		while (up <= end) {
 			if (data[up].getFio() == key) {
@@ -31,7 +31,7 @@ void bsearch(vector<OurClass>& data, int start, int end, std::string& key, vecto
 			}
 			else { break; }
 		}
-		// идем вниз и ищем подходящие значения
+		// РёРґРµРј РІРЅРёР· Рё РёС‰РµРј РїРѕРґС…РѕРґСЏС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ
 		down = middle - 1;
 		while (down >= start) {
 			if (data[down].getFio() == key) {
@@ -57,54 +57,54 @@ void binarySearch(vector<OurClass> & data, int length,std::string& key) {
 	double startWithSort;
 	double startWithoutSort;
 	double end;
-	vector<OurClass> Found1;
+	vector<OurClass> Found;
 	vector<OurClass> copyData(data);
 	startWithSort = clock();
 	quickSort(copyData, length);
 	startWithoutSort = clock();
-	bsearch(copyData, 0, length - 1, key, Found1);
+	bsearch(copyData, 0, length - 1, key, Found);
 	end = clock();
 
 
-	////////ЗАПИСЬ В КОНСОЛЬ/////////////
+	////////Р—РђРџРРЎР¬ Р’ РљРћРќРЎРћР›Р¬/////////////
 	/////////////////////////////////////
-	cout << "Бинарный поиск с заранее отсортированным массивом. При n = " << length << " время поиска составило: "
-		<< (end - startWithoutSort) << " миллисекунд\n";
-	cout << "Бинарный поиск с сортировкой. При n = " << length << " время поиска составило: " <<
-		(end - startWithSort)  << " миллисекунд\n";
-	cout << "Мы искали: " << key <<" " << Found1.size() << "\n";
-	if (Found1.size() > 0) {
-		cout << "Нашлось: \n";
-		for (int i = 0; i < Found1.size(); i++) {
-			cout << "\t" << Found1[i].AllString() << "\n";
+	cout << "Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє СЃ Р·Р°СЂР°РЅРµРµ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рј РјР°СЃСЃРёРІРѕРј. РџСЂРё n = " << length << " РІСЂРµРјСЏ РїРѕРёСЃРєР° СЃРѕСЃС‚Р°РІРёР»Рѕ: "
+		<< (end - startWithoutSort) << " РјРёР»Р»РёСЃРµРєСѓРЅРґ\n";
+	cout << "Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№. РџСЂРё n = " << length << " РІСЂРµРјСЏ РїРѕРёСЃРєР° СЃРѕСЃС‚Р°РІРёР»Рѕ: " <<
+		(end - startWithSort)  << " РјРёР»Р»РёСЃРµРєСѓРЅРґ\n";
+	cout << "РњС‹ РёСЃРєР°Р»Рё: " << key << "\n";
+	if (Found.size() > 0) {
+		cout << "РќР°С€Р»РѕСЃСЊ: \n";
+		for (int i = 0; i < Found.size(); i++) {
+			cout << "\t" << Found[i].AllString() << "\n";
 		}
 	}
 	else {
-		cout << "Ничего не найдено\n";
+		cout << "РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ\n";
 	}
 	cout << "------------------------------------------------------------------\n";
 
 
 
-	///////ЗАПИСЬ В ФАЙЛ///////
+	///////Р—РђРџРРЎР¬ Р’ Р¤РђР™Р›///////
 	///////////////////////////
 	ofstream file;
-	file.open("D:\\УЧЕБА\\Методы программирования\\19var\\laba2\\BinarySearch.txt", ios::app); // окрываем файл для записи
+	file.open("D:\\РЈР§Р•Р‘Рђ\\РњРµС‚РѕРґС‹ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ\\19var\\laba2\\BinarySearch.txt", ios::app); // РѕРєСЂС‹РІР°РµРј С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё
 	if (file.is_open())
 	{
-		file << "Бинарный поиск с заранее отсортированным массивом. При n = " << length << " время поиска составило: "
-			<< (end - startWithoutSort) << " миллисекунд\n";
-		file << "Бинарный поиск с сортировкой. При n = " << length << " время поиска составило: " <<
-			(end - startWithSort) << " миллисекунд\n";
-		file << "Мы искали: " << key << " " << "\n";
-		if (Found1.size() > 0) {
-			file << "Нашлось: \n";
-			for (int i = 0; i < Found1.size(); i++) {
-				file << "\t" << Found1[i].AllString() << "\n";
+		file << "Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє СЃ Р·Р°СЂР°РЅРµРµ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рј РјР°СЃСЃРёРІРѕРј. РџСЂРё n = " << length << " РІСЂРµРјСЏ РїРѕРёСЃРєР° СЃРѕСЃС‚Р°РІРёР»Рѕ: "
+			<< (end - startWithoutSort) << " РјРёР»Р»РёСЃРµРєСѓРЅРґ\n";
+		file << "Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№. РџСЂРё n = " << length << " РІСЂРµРјСЏ РїРѕРёСЃРєР° СЃРѕСЃС‚Р°РІРёР»Рѕ: " <<
+			(end - startWithSort) << " РјРёР»Р»РёСЃРµРєСѓРЅРґ\n";
+		file << "РњС‹ РёСЃРєР°Р»Рё: " << key << "\n";
+		if (Found.size() > 0) {
+			file << "РќР°С€Р»РѕСЃСЊ: \n";
+			for (int i = 0; i < Found.size(); i++) {
+				file << "\t" << Found[i].AllString() << "\n";
 			}
 		}
 		else {
-			file << "Ничего не найдено\n";
+			file << "РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ\n";
 		}
 		file << "------------------------------------------------------------------\n";
 	}
